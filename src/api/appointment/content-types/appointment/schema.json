@@ -4,7 +4,8 @@
   "info": {
     "singularName": "appointment",
     "pluralName": "appointments",
-    "displayName": "Appointment"
+    "displayName": "Appointment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,6 +31,22 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::doctor.doctor"
+    },
+    "Nom": {
+      "type": "string"
+    },
+    "Prenom": {
+      "type": "string"
+    },
+    "Telephone": {
+      "type": "string"
+    },
+    "Confirmer": {
+      "type": "boolean",
+      "default": false
+    },
+    "id_patient": {
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,121 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patients",
+  "info": {
+    "singularName": "patient",
+    "pluralName": "patients",
+    "displayName": "Patient",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "unique": true,
+      "required": true
+    },
+    "family_name": {
+      "type": "string"
+    },
+    "given_name": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "string"
+    },
+    "Adresse": {
+      "type": "string"
+    },
+    "Date_de_naissance": {
+      "type": "string"
+    },
+    "Phone": {
+      "type": "string"
+    },
+    "historique_medical": {
+      "type": "text"
+    },
+    "medicaments_actuels": {
+      "type": "text"
+    },
+    "Allergies": {
+      "type": "text"
+    },
+    "Antecedents_orthophoniques": {
+      "type": "string"
+    },
+    "cas_echeant": {
+      "type": "text"
+    },
+    "Resultats_des_evaluations_precedentes": {
+      "type": "text"
+    },
+    "Developpement_moteur": {
+      "type": "text"
+    },
+    "Acquisition_du_langage": {
+      "type": "text"
+    },
+    "Antecedents_de_retard_de_langage_ou_de_developpement": {
+      "type": "boolean"
+    },
+    "Composition_de_la_famille": {
+      "type": "text"
+    },
+    "Langues_parlees_a_la_maison": {
+      "type": "string"
+    },
+    "Dynamique_familiale": {
+      "type": "text"
+    },
+    "Niveau_scolaire_actuel": {
+      "type": "text"
+    },
+    "Performances_academiques": {
+      "type": "text"
+    },
+    "Existence_de_difficultes_en_classe": {
+      "type": "boolean"
+    },
+    "Langues_parlees": {
+      "type": "string"
+    },
+    "Comprehension_verbale": {
+      "type": "string"
+    },
+    "Contact_visuel": {
+      "type": "text"
+    },
+    "Expressions_faciales": {
+      "type": "string"
+    },
+    "Loisirs_et_activites_preferes": {
+      "type": "text"
+    },
+    "Interactions_sociales": {
+      "type": "text"
+    },
+    "Evenements_significatifs_recents": {
+      "type": "text"
+    },
+    "Objectifs_specifiques_pour_la_prise_en_charge_orthophonique": {
+      "type": "text"
+    },
+    "Attentes_et_preoccupations_des_parents_patients": {
+      "type": "text"
+    },
+    "id_patient": {
+      "type": "string",
+      "unique": true
+    },
+    "comprehensionUtilisationGestes": {
+      "type": "text"
+    },
+    "expressionVerbale": {
+      "type": "text"
+    }
+  }
+}

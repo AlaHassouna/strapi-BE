@@ -742,7 +742,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -771,6 +770,39 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    family_name: Attribute.String;
+    given_name: Attribute.String;
+    id_patient: Attribute.String;
+    picture: Attribute.String;
+    Adresse: Attribute.String;
+    Date_de_naissance: Attribute.String;
+    phone: Attribute.String;
+    historique_medical: Attribute.Text;
+    medicaments_actuels: Attribute.Text;
+    Allergies: Attribute.Text;
+    Antecedents_orthophoniques: Attribute.String;
+    cas_echeant: Attribute.Text;
+    Resultats_des_evaluations_precedentes: Attribute.Text;
+    Developpement_moteur: Attribute.Text;
+    Acquisition_du_langage: Attribute.Text;
+    Antecedents_de_retard_de_langage_ou_de_developpement: Attribute.Boolean;
+    Composition_de_la_famille: Attribute.Text;
+    Langues_parlees_a_la_maison: Attribute.String;
+    Dynamique_familiale: Attribute.Text;
+    Niveau_scolaire_actuel: Attribute.Text;
+    Performances_academiques: Attribute.Text;
+    Existence_de_difficultes_en_classe: Attribute.Boolean;
+    Langues_parlees: Attribute.String;
+    Comprehension_verbale: Attribute.String;
+    Expression_verbale: Attribute.String;
+    Comprehension_et_utilisation_des_gestes: Attribute.String;
+    Contact_visuel: Attribute.String;
+    Expressions_faciales: Attribute.String;
+    Loisirs_et_activites_preferes: Attribute.Text;
+    Interactions_sociales: Attribute.Text;
+    Evenements_significatifs_recents: Attribute.Text;
+    Objectifs_specifiques_pour_la_prise_en_charge_orthophonique: Attribute.Text;
+    Attentes_et_preoccupations_des_parents_patients: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -794,6 +826,7 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
     singularName: 'appointment';
     pluralName: 'appointments';
     displayName: 'Appointment';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -809,6 +842,11 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
       'oneToOne',
       'api::doctor.doctor'
     >;
+    Nom: Attribute.String;
+    Prenom: Attribute.String;
+    Telephone: Attribute.String;
+    Confirmer: Attribute.Boolean & Attribute.DefaultTo<false>;
+    id_patient: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -820,6 +858,41 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::appointment.appointment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBlockedTimeBlockedTime extends Schema.CollectionType {
+  collectionName: 'blocked_times';
+  info: {
+    singularName: 'blocked-time';
+    pluralName: 'blocked-times';
+    displayName: 'BlockedTime';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    Date: Attribute.String;
+    start_time: Attribute.String;
+    end_time: Attribute.String;
+    all_day: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blocked-time.blocked-time',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blocked-time.blocked-time',
       'oneToOne',
       'admin::user'
     > &
@@ -908,6 +981,70 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
   };
 }
 
+export interface ApiPatientPatient extends Schema.CollectionType {
+  collectionName: 'patients';
+  info: {
+    singularName: 'patient';
+    pluralName: 'patients';
+    displayName: 'Patient';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    family_name: Attribute.String;
+    given_name: Attribute.String;
+    picture: Attribute.String;
+    Adresse: Attribute.String;
+    Date_de_naissance: Attribute.String;
+    Phone: Attribute.String;
+    historique_medical: Attribute.Text;
+    medicaments_actuels: Attribute.Text;
+    Allergies: Attribute.Text;
+    Antecedents_orthophoniques: Attribute.String;
+    cas_echeant: Attribute.Text;
+    Resultats_des_evaluations_precedentes: Attribute.Text;
+    Developpement_moteur: Attribute.Text;
+    Acquisition_du_langage: Attribute.Text;
+    Antecedents_de_retard_de_langage_ou_de_developpement: Attribute.Boolean;
+    Composition_de_la_famille: Attribute.Text;
+    Langues_parlees_a_la_maison: Attribute.String;
+    Dynamique_familiale: Attribute.Text;
+    Niveau_scolaire_actuel: Attribute.Text;
+    Performances_academiques: Attribute.Text;
+    Existence_de_difficultes_en_classe: Attribute.Boolean;
+    Langues_parlees: Attribute.String;
+    Comprehension_verbale: Attribute.String;
+    Contact_visuel: Attribute.Text;
+    Expressions_faciales: Attribute.String;
+    Loisirs_et_activites_preferes: Attribute.Text;
+    Interactions_sociales: Attribute.Text;
+    Evenements_significatifs_recents: Attribute.Text;
+    Objectifs_specifiques_pour_la_prise_en_charge_orthophonique: Attribute.Text;
+    Attentes_et_preoccupations_des_parents_patients: Attribute.Text;
+    id_patient: Attribute.String & Attribute.Unique;
+    comprehensionUtilisationGestes: Attribute.Text;
+    expressionVerbale: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::patient.patient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::patient.patient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSliderSlider extends Schema.CollectionType {
   collectionName: 'sliders';
   info: {
@@ -958,8 +1095,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::appointment.appointment': ApiAppointmentAppointment;
+      'api::blocked-time.blocked-time': ApiBlockedTimeBlockedTime;
       'api::category.category': ApiCategoryCategory;
       'api::doctor.doctor': ApiDoctorDoctor;
+      'api::patient.patient': ApiPatientPatient;
       'api::slider.slider': ApiSliderSlider;
     }
   }
