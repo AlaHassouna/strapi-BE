@@ -15,7 +15,7 @@
     "email": {
       "type": "email",
       "unique": true,
-      "required": true
+      "required": false
     },
     "family_name": {
       "type": "string"

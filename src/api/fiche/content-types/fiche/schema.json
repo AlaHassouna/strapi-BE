@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "blocked_times",
+  "collectionName": "fiches",
   "info": {
-    "singularName": "blocked-time",
-    "pluralName": "blocked-times",
-    "displayName": "BlockedTime",
+    "singularName": "fiche",
+    "pluralName": "fiches",
+    "displayName": "Fiche",
     "description": ""
   },
   "options": {
@@ -12,22 +12,31 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "Patient": {
       "type": "string"
     },
     "Date": {
       "type": "string"
     },
-    "start_time": {
+    "Commentaires": {
+      "type": "text"
+    },
+    "id_patient": {
       "type": "string"
     },
-    "end_time": {
+    "Time": {
       "type": "string"
-    },
-    "all_day": {
-      "type": "boolean"
     },
     "Booking_id": {
+      "type": "string"
+    },
+    "payed": {
+      "type": "boolean"
+    },
+    "PayedComment": {
+      "type": "text"
+    },
+    "montant": {
       "type": "string"
     }
   }

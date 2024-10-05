@@ -882,6 +882,7 @@ export interface ApiBlockedTimeBlockedTime extends Schema.CollectionType {
     start_time: Attribute.String;
     end_time: Attribute.String;
     all_day: Attribute.Boolean;
+    Booking_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -981,6 +982,45 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
   };
 }
 
+export interface ApiFicheFiche extends Schema.CollectionType {
+  collectionName: 'fiches';
+  info: {
+    singularName: 'fiche';
+    pluralName: 'fiches';
+    displayName: 'Fiche';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Patient: Attribute.String;
+    Date: Attribute.String;
+    Commentaires: Attribute.Text;
+    id_patient: Attribute.String;
+    Time: Attribute.String;
+    Booking_id: Attribute.String;
+    payed: Attribute.Boolean;
+    PayedComment: Attribute.Text;
+    montant: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::fiche.fiche',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::fiche.fiche',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPatientPatient extends Schema.CollectionType {
   collectionName: 'patients';
   info: {
@@ -993,7 +1033,7 @@ export interface ApiPatientPatient extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    email: Attribute.Email & Attribute.Unique;
     family_name: Attribute.String;
     given_name: Attribute.String;
     picture: Attribute.String;
@@ -1098,6 +1138,7 @@ declare module '@strapi/types' {
       'api::blocked-time.blocked-time': ApiBlockedTimeBlockedTime;
       'api::category.category': ApiCategoryCategory;
       'api::doctor.doctor': ApiDoctorDoctor;
+      'api::fiche.fiche': ApiFicheFiche;
       'api::patient.patient': ApiPatientPatient;
       'api::slider.slider': ApiSliderSlider;
     }
